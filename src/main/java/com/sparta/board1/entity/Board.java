@@ -15,9 +15,18 @@ public class Board extends Timestamped{
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String comment;
+    private String content;
 
     @OneToMany(mappedBy = "board", cascade =  CascadeType.REMOVE)
     private List<Comment> comments = new ArrayList<>();
 
+    public Board(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
+    public void updateBoard(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }
